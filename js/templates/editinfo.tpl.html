@@ -1,0 +1,79 @@
+<div class="dash-area">
+
+    <div class="wrapper">
+        <div class="titlebar">
+            <div>维护个人信息</div>
+        </div>
+        <div class="alertinfo">注意:如果您不填写银行卡号，支行信息，则将无法通过企业银行帐号结算工资，请务必准确填写。</div>
+        <div class="whitepanel">
+            <div class="columns">
+                <form>
+
+                    <span class="label">真实姓名</span><input ng-model="userInfo.name" placeholder="请使用身份证姓名"><br>
+                    <span class="label">性别</span><input ng-model="userInfo.gender"><br>
+                    <span class="label">微信</span><input ng-model="userInfo.QQ"><br>
+                    <span class="label">邮箱</span><input ng-model="userInfo.email"><br>
+                    <span class="label">省份</span><select ng-model="userInfo.Province"
+                                                         ng-options="value.name for value in provinceList"
+                                                         ng-change="onProvinceChange()"></select><br>
+                    <span class="label">学校</span><select style="width: 200px;" ng-model="userInfo.School"
+                                                         ng-options="value.name for value in schoolList"></select><br>
+                    <span class="label">收件地址</span><input ng-model="userInfo.Address"><br>
+                    <span class="label">毕业年份</span><input ng-model="userInfo.FinishYear"><br>
+
+                    <span class="label">开户人姓名</span><input ng-model="userInfo.AccountName"><br>
+                    <span class="label">开户城市</span><input ng-model="userInfo.AccountCity"><br>
+                    <span class="label">开户行名称</span>
+                    <select ng-model="userInfo.AccountBank">
+                        <option value="{{userInfo.AccountBank}}" selected>{{userInfo.AccountBank}}</option>
+                        <option value="中国银行">中国银行</option>
+                        <option value="中国工商银行">中国工商银行</option>
+                        <option value="中国建设银行">中国建设银行</option>
+                        <option value="招商银行">招商银行</option>
+                        <option value="中国农业银行">中国农业银行</option>
+                        <option value="中国交通银行">中国交通银行</option>
+                        <option value="中国光大银行">中国光大银行</option>
+                        <option value="中国民生银行">中国民生银行</option>
+                        <option value="兴业银行">兴业银行</option>
+                        <option value="深圳发展银行">深圳发展银行</option>
+                        <option value="广东发展银行">广东发展银行</option>
+                        <option value="上海浦东发展银行">上海浦东发展银行</option>
+                        <option value="华夏银行">华夏银行</option>
+                        <option value="中信实业银行">中信实业银行</option>
+                        <option value="中国邮政储蓄银行">中国邮政储蓄银行</option>
+                        <option value="上海银行">上海银行</option>
+                        <option value="北京银行">北京银行</option>
+                        <option value="城市商业银行">城市商业银行</option>
+                        <option value="农村信用合作社">农村信用合作社</option>
+                        <option value="农村商业银行">农村商业银行</option>
+                    </select><br><br>
+                    <span class="label">银行账号</span><input ng-model="userInfo.AccountNumber"><br>
+            <span style="color: red;" class="alertinfo">
+                <p>请别写信用卡的信息，我们使用的快钱系统不支持给信用卡结帐</p>
+            </span>
+                    <span class="label">开户支行(必填!!!)</span><input ng-model="userInfo.AccountSubBank"><br>
+            <span class="alertinfo">
+                <p>开户行的填写格式举例为：<u>中国农业银行北京分行海淀支行海体分理处。</u></br>
+                    如果您无法确定该银行卡的开户行名称，您可以致电相关银行客服，报出您的银行账户获取开户行信息。</p>
+            </span>
+                    <span class="label">邮箱地址</span><input ng-model="userInfo.Mail"><br>
+                    <!--<span class="label">专业</span><select style="width: 200px;" ng-model="userInfo.Major"
+                                                         ng-options="value.major_name for value in majorList"></select><br>-->
+                    <span class="label">校区</span><input ng-model="userInfo.SchoolArea"><br>
+                    <span class="label">校区人数</span><input ng-model="userInfo.AreaStudentCount"><br>
+
+                    <span class="label">个人介绍（{{userInfo.whoami.length}}/140）</span>
+                    <textarea ng-model="userInfo.whoami" maxlength="140"></textarea>
+                    <br>
+
+
+                </form>
+            </div>
+            <div class="confirmarea">
+                <button class="done" ng-click="onClickEditInfo()">
+                    确认，保存修改
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

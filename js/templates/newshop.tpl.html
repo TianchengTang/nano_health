@@ -1,0 +1,107 @@
+<div class="dash-area">
+
+    <div CLASS="wrapper">
+    <div class="titlebar">
+        <div>签约全新的打印店（结账周期半个月）</div>
+    </div>
+
+    <div class="whitepanel">
+    <form>
+        <div class="columns">
+            <span class="label">打印店名称</span><input ng-model="ShopInfo.ShopName"><br>
+            <span class="label">店主手机号</span><input ng-model="ShopInfo.OwnerPhone"><br>
+            <span class="label">主要联系方式</span><input ng-model="ShopInfo.ContactNumber" placeholder="加区号不带符号！！！"><br>
+            <span class="label">店面地址</span><input ng-model="ShopInfo.Address" placeholder="本校学生一看就懂的地址"><br>
+            <span class="label">密码</span><input type="password" ng-model="ShopInfo.Password"><br>
+            <span class="label">确认密码</span><input type="password" ng-model="ShopInfo.PasswodRp"><br>
+            <span class="label">所在省份</span><select ng-model="ShopInfo.Province"
+                                                   ng-options="value.name for value in provinceList"  ng-change="onProvinceChange()"></select><br>
+            <span class="label">关联学校</span><select style="width: 200px;"  ng-model="ShopInfo.School"
+                                                 ng-options="value.name for value in schoolList"></select><br>
+            <span class="label">学生黑白单面价格</span><input ng-model="ShopInfo.SinglePrice" placeholder="老板展示给学生时">&nbsp分<br>
+            <span class="label">学生黑白双面价格</span><input ng-model="ShopInfo.DoublePrice" placeholder="一页两面的价格">&nbsp分<br>
+
+            <span class="label">对店黑白单面价格</span><input ng-model="ShopInfo.SinglePriceForShop" placeholder="纷印与老板结算时">&nbsp分<br>
+            <span class="label">对店黑白双面价格</span><input ng-model="ShopInfo.DoublePriceForShop" placeholder="一页两面的价格">&nbsp分<br>
+            <span class="alertinfo">注:学生单双面价格要高于对店单双面价格</span>
+            <br>
+            <span class="label">开户行名称</span>
+            <select ng-model="ShopInfo.Card.Name">
+                <option value="{{userInfo.AccountBank}}" selected>{{userInfo.AccountBank}}</option>
+                <option value="中国银行">中国银行</option>
+                <option value="中国工商银行">中国工商银行</option>
+                <option value="中国建设银行">中国建设银行</option>
+                <option value="招商银行">招商银行</option>
+                <option value="中国农业银行">中国农业银行</option>
+                <option value="中国交通银行">中国交通银行</option>
+                <option value="中国光大银行">中国光大银行</option>
+                <option value="中国民生银行">中国民生银行</option>
+                <option value="兴业银行">兴业银行</option>
+                <option value="深圳发展银行">深圳发展银行</option>
+                <option value="广东发展银行">广东发展银行</option>
+                <option value="上海浦东发展银行">上海浦东发展银行</option>
+                <option value="华夏银行">华夏银行</option>
+                <option value="中信实业银行">中信实业银行</option>
+                <option value="中国邮政储蓄银行">中国邮政储蓄银行</option>
+                <option value="上海银行">上海银行</option>
+                <option value="北京银行">北京银行</option>
+                <option value="城市商业银行">城市商业银行</option>
+                <option value="农村信用合作社">农村信用合作社</option>
+                <option value="农村商业银行">农村商业银行</option>
+            </select><br>
+            <span class="label">开户城市</span><input ng-model="ShopInfo.Card.City"><br>
+            <span class="label">支行名称</span><input ng-model="ShopInfo.Card.BranchName"><br>
+            <span style="color: red;" class="alertinfo">
+                <p>开户行的填写格式举例为：中国农业银行北京分行海淀支行海体分理处。<br>
+                如果您无法确定该银行卡的开户行名称，您可以致电相关银行客服，报出您的银行账户获取开户行信息。</p>
+            </span>
+            <span class="label">卡号</span><input ng-model="ShopInfo.Card.Account"><br>
+            <span style="color: red;" class="alertinfo">
+                <p>请别写信用卡的信息，我们使用的快钱系统不支持给信用卡结帐<br></p>
+            </span>
+            <span class="label">姓名</span><input ng-model="ShopInfo.Card.Owner"><br>
+            <span class="label">支付宝账号（选填）</span><input ng-model="ShopInfo.AliPay.Account">
+            <br>
+            <br>
+            <br>
+            <span class="special">请仔细填写每一个空格,否则将不予审批</span>
+            <br>
+        </div>
+    </form>
+    <div class="confirmarea"> <button class="done" ng-click="onClickApplyButton()">
+        确认，申请签约
+    </button>
+    </div>
+    </div>
+</div></div>
+
+<div class="dash-area">
+    <div class="wrapper">
+    <div class="titlebar">
+        <div>我已签约的打印店</div>
+    </div>
+    <div style="display:none">
+        <iframe name="ajaxUpload" id="ajaxUpload"></iframe>
+
+        <form name="uploadfileform" id="uploadfileform" method="post" action="url" enctype="multipart/form-data" target="ajaxUpload">
+            <input type="file" id="file" name="file"/>
+        </form>
+    </div>
+
+    <div class="side4" ng-repeat-start="shop in WaitShops">
+        纷印第{{shop.id}}号新店面<br>
+    </div>
+    <div class="side">
+        {{shop.name}}
+    </div>
+    <div class="side4" ng-repeat-end>
+        <button class="done small" ng-click="onClickUploadButton(shop.id)" ng-if="shop.state==1">
+            上传合同
+        </button>
+        <button class="done small" ng-click="onClickUploadButton(shop.id)" ng-if="shop.state==2">
+            等待审核
+        </button>
+    </div>
+</div>
+
+</div>

@@ -1,0 +1,53 @@
+<div class="dash-area">
+    <div class="wrapper">
+    <div class="titlebar">
+        <div>新建推广码</div>
+    </div>
+        <div class="whitepanel">
+    <form>
+        <div class="gridpanel">
+        <div>兼职类标识名：<br>
+            重庆大学-韩露</div>
+        <div> 地推类二维码标识名：<br>
+            重庆大学-戏院抢票送纷印红包活动</div>
+        <div>线上活动标识名：<br>
+            重庆大学-学生会女生节微信</div>
+        </div>
+        <!--<span class="label">省份限定</span>-->
+        <!--<select ng-model="Pcodes.Province" ng-options="value.name for value in Pcodes.Provinces"-->
+                <!--ng-change="onProvinceChanged()">-->
+        <!--</select><br>-->
+        <!--<span class="label">城市限定</span>-->
+        <!--<select ng-model="Pcodes.City" ng-options="value.name for value in Pcodes.Citys" ng-change="onCityChanged()">-->
+        <!--</select><br>-->
+        <!--<span class="label">学校限定</span>-->
+        <!--<select ng-model="Pcodes.School" ng-options="value.name for value in Pcodes.Schools">-->
+        <!--</select><br>-->
+        <div class="confirmarea"><span class="label" style="margin-left:-50px;">标识名</span><input ng-model="Pcodes.IdName"> <button class="done" style="margin-top: 20px" ng-click="onClickCreateButton()">立即生成</button>
+        </div>
+    </form>
+</div>
+        <br>
+
+    <div class="titlebar">
+        <div>管理推广码</div>
+    </div>
+
+
+<div class="whitepanel">
+    <table border="1" width="800px" style="font-size:14px;">
+        <tr>
+            <th>二维码名称</th>
+            <th>注册链接</th>
+            <th>创建时间</th>
+        </tr>
+        <tr ng-repeat="code in Mcodes">
+            <td>{{code.name}}</td>
+            <td><a href="http://fenyin.me/register?promo={{code.promo_code}}" target="_blank">http://fenyin.me/register?promo={{code.promo_code}}</td>
+            <td>{{code.created_at}}</td>
+        </tr>
+    </table>
+        </div>
+</div>
+</div>
+</div>

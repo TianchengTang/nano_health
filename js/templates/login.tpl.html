@@ -1,0 +1,41 @@
+
+<div class="modal fade" id="loginModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content" style="border-radius: 0px;">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">欢迎登录纷印校园大使系统</h4>
+                <i class="fa fa-spinner fa-spin" style="font-size: 35px;position: absolute;top: 12px;right: 20px;"
+                   ng-show="showSpinner"></i>
+            </div>
+            <div class="modal-body">
+                <!-- Login Form -->
+                <form role="form">
+                    <fieldset>
+                        <div class="alert alert-danger" ng-show="loginData.errorInfo">{{loginData.errorInfo}}</div>
+                        <div class="form-group">
+                            <input class="form-control" placeholder="手机号码" type="cellphone"
+                                   ng-model="loginData.cellphone" autofocus style="border-radius: 0px;">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" placeholder="密码" type="password" ng-model="loginData.password"
+                                   style="border-radius: 0px;">
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input name="remember" type="checkbox" value="Remember Me" ng-model="rememberMe">记住我
+                            </label>
+                            <!--
+                            <a href="{{loginData.forget_passwd}}" style="float:right">忘记密码</a>
+                            -->
+                        </div>
+                        <!-- Change this to a button or input when using this as a form -->
+                        <a href="#/register" target="_blank"><div>注册成为纷印校园大使？</div></a><br>
+                        <a class="btn btn-lg btn-primary btn-block" style="padding:6px 12px; border-radius: 0px;"
+                           ng-click="login(loginData.cellphone, loginData.password)">登录</a>
+                    </fieldset>
+                </form>
+                <!-- # Login Form -->
+            </div>
+        </div>
+    </div>
+</div>

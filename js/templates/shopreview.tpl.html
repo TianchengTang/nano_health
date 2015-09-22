@@ -1,0 +1,36 @@
+<div class="dash-area">
+    <div class="titlebar">
+        <div>打印店回访</div>
+    </div>
+    <form>
+        <div class="side">
+            <span style="text-align: left" class="label">打印店</span>
+            <select style="width: 200px;" ng-model="printShop" ng-options="value.name for value in printShops"/>
+            <br>
+            <input type="checkbox" name="" style="width: 50px; text-align: right" ng-model="feedBack.isWork"/><span
+                style="text-align: left" class="label">软件是否正常运行</span><br>
+            <input type="checkbox" name="" style="width: 50px;text-align: right" ng-model="feedBack.isSuit"/><span
+                style="text-align: left" class="label">海报是否张贴合适</span><br>
+            <input type="checkbox" name="" style="width: 50px;text-align: right" ng-model="feedBack.isObserve"/><span
+                style="text-align: left" class="label">二维码是否在显眼处</span><br>
+            <span style="text-align: left" class="label">老板评分</span>
+            <select name="score" ng-model="feedBack.score">
+                <option value="1">1分</option>
+                <option value="2">2分</option>
+                <option value="3">3分</option>
+                <option value="4">4分</option>
+                <option value="5">5分</option>
+            </select>
+            <br>
+        </div>
+
+        <div class="side">
+            <span class="label">详情反馈（0/140）</span><br>
+            <textarea style="height: 186px; width: 380px; font-size: 18px;" ng-model="feedBack.smgui"></textarea>
+            <br>
+            <button class="done" ng-click="onClickSaveButton()">
+                确认，保存修改
+            </button>
+        </div>
+    </form>
+</div>

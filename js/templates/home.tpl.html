@@ -1,0 +1,112 @@
+<div ng-if="is_super == 1" class="dash-area">
+    <div class="titlebar">
+        <div>审批大使申请</div>
+    </div>
+    <div ng-repeat="am in caApplyList">
+        {{am.name}}&nbsp;｜&nbsp;{{am.cellphone}}<br>
+        {{am.province_name}}&nbsp;|&nbsp;{{am.school_name}}&nbsp;|&nbsp;{{am.whoami==null?"无":am.whoami}}<br>
+        {{am.account_bank}}&nbsp;|&nbsp;{{am.account_name}}&nbsp;|&nbsp;{{am.account_number}}&nbsp;|&nbsp;{{am.alipay_account==null?"无":am.alipay_account}}<br>
+        <button style="background-color: #00ce9b" ng-click="applyCa(am.id)">同意</button>
+        &nbsp;
+        <button style="background-color: #245269" ng-click="denyCa(am.id)">拒绝</button>
+        <br>
+        <hr/>
+        <br>
+    </div>
+</div>
+
+<div ng-if="is_super == 1" class="dash-area">
+    <div class="titlebar">
+        <div>审批店铺申请</div>
+    </div>
+    <div ng-repeat="am in psApplyList">
+        {{am.ambassador}}&nbsp;|&nbsp;{{am.am_cellphone}}<br>
+        {{am.am_province_name}}&nbsp;|&nbsp;{{am.am_school_name}}<br>
+        {{am.name}}&nbsp;|&nbsp;{{am.address}}<br>
+        {{am.bank_name}}&nbsp;|&nbsp;{{am.sub_bank_name}}&nbsp;|&nbsp;{{am.bank_card_no}}&nbsp;|&nbsp;{{am.alipay_account==null?"无":am.alipay_account}}<br>
+        单页：{{am.black_single_price}}/{{am.black_single_price_for_shop}}&nbsp;|&nbsp;双页：{{am.black_double_price}}/{{am.black_double_price_for_shop}}<br>
+        <button style="background-color: #00ce9b" ng-click="applyPs(am.id)">同意</button>
+        &nbsp;
+        <button style="background-color: #245269" ng-click="denyPs(am.id)">拒绝</button>
+        <br>
+        <hr/>
+        <br>
+    </div>
+</div>
+
+<div class="dash-area">
+    <div class="wrapper">
+        <div class="titlebar">
+            <div>当前任务列表</div>
+        </div>
+        <div class="side3_4" ng-repeat="task in unfinished_tasks">
+            task<br><br>
+        </div>
+
+        <div class="side4" ng-repeat="task in unfinished_tasks">
+            <button class="done" style="width:180px;" ng-click="onClickFinishButton(task.id)">完成任务</button>
+            <br>
+            <br>
+        </div>
+
+        <div class="titlebar">
+            <div>我的推广码</div>
+        </div>
+
+        <div class="whitepanel">
+            推广链接：<a href="http://fenyin.me/register?promo={{promo_code}}" target="_blank">http://fenyin.me/register?promo={{promo_code}}</a>&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;<span> <!--{{RegisterTotal}}注册 / {{payUser}}活跃--></span><br><br>
+            <a href="http://qr.liantu.com/api.php?text=http://fenyin.me/register?promo={{promo_code}}" target="_blank">点击获取二维码</a>
+        </div>
+        <br>
+
+        <div class="titlebar">
+            <div>最近推广数据</div>
+        </div>
+        大使个人推广数据<div id="histogram"></div>
+        总计推广数据<div id="histogramTotal"></div>
+        <br>
+
+        <div ng-if="is_super == 1">
+            <table border="1" width="750px" style="font-size:12px;">
+                <tr>
+                    <th>学校编号</th>
+                    <th>学校</th>
+                    <th>省份</th>
+                    <th>总注册人数</th>
+                    <th>今天</th>
+                    <th>昨天</th>
+                    <th>前天</th>
+                    <th>3天前</th>
+                    <th>4天前</th>
+                    <th>5天前</th>
+                    <th>6天前</th>
+                    <th>7天前</th>
+                    <th>8天前</th>
+                    <th>9天前</th>
+                    <th>10天前</th>
+                    <th>多余10天前</th>
+                </tr>
+                <tr ng-repeat="line in tdLines">
+                    <td>{{line.school_id}}</td>
+                    <td>{{line.school_name}}</td>
+                    <td>{{line.province_name}}</td>
+                    <td>{{line.student_count}}</td>
+                    <td>{{line.a0}}</td>
+                    <td>{{line.a1}}</td>
+                    <td>{{line.a2}}</td>
+                    <td>{{line.a3}}</td>
+                    <td>{{line.a4}}</td>
+                    <td>{{line.a5}}</td>
+                    <td>{{line.a6}}</td>
+                    <td>{{line.a7}}</td>
+                    <td>{{line.a8}}</td>
+                    <td>{{line.a9}}</td>
+                    <td>{{line.a10}}</td>
+                    <td>{{line.a11}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+

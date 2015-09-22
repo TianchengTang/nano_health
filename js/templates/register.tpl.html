@@ -1,0 +1,78 @@
+<div class="modal fade" id="registerModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content" style="border-radius: 0px;">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">欢迎注册纷印校园大使系统</h4>
+                <i class="fa fa-spinner fa-spin" style="font-size: 35px;position: absolute;top: 12px;right: 20px;"
+                   ng-show="showSpinner"></i>
+            </div>
+            <div class="modal-body">
+                <!-- Login Form -->
+                <form role="form">
+                    <fieldset>
+                        <div class="alert alert-danger" ng-show="registerData.errorInfo">{{registerData.errorInfo}}
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" placeholder="手机号码" type="cellphone"
+                                   ng-model="registerData.cellphone" autofocus style="border-radius: 0px;">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" placeholder="密码" type="password"
+                                   ng-model="registerData.password"
+                                   style="border-radius: 0px;">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" placeholder="姓名" type="text"
+                                   ng-model="registerData.name"
+                                   style="border-radius: 0px;">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" placeholder="短信验证码" type="text"
+                                   ng-model="registerData.verification"
+                                   style="border-radius: 0px; width: 50%; float:left;">
+                            <button class="form-control" type="text"
+                                    style="border-radius: 0px; width: 50%; float: left; background-color: #00ce9b; color:white;"
+                                    ng-click="sendMessage(registerData.cellphone)">发送短信验证码
+                            </button>
+                            <div style="clear: both;"></div>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" placeholder="省份" type="text"
+                                    ng-options="value.name for value in Provinces"
+                                    style="border-radius: 0px;" ng-model="registerData.Province"
+                                    ng-change="onProvinceChanged()">
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" placeholder="学校" type="text"
+                                    ng-options="value.name for value in Schools"
+                                    style="border-radius: 0px;" ng-model="registerData.School">
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="申请留言" type="text"
+                                      ng-model="registerData.applyLetter"
+                                      style="border-radius: 0px; height:140px;"></textarea>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input name="remember" type="checkbox" value="Agree Me" ng-model="registerData.agreeMe">已阅读并同意大使协议
+                            </label>
+                            <!--
+                            <a href="{{loginData.forget_passwd}}" style="float:right">忘记密码</a>
+                            -->
+                        </div>
+                        <!-- Change this to a button or input when using this as a form -->
+                        <a href="http://ca.fenyin.me/contact.htm" target="_blank">
+                            <div>点此阅读大使协议</div>
+                        </a><br>
+                        <a class="btn btn-lg btn-primary btn-block" ng-class=" {'disabled':registerData.agreeMe === false}"
+                           style="padding:6px 12px; border-radius: 0px;"
+                           ng-click="registerAmbassador()">同意大使协议，立即注册</a>
+                    </fieldset>
+                </form>
+                <!-- # Login Form -->
+            </div>
+        </div>
+    </div>
+</div>
