@@ -31,7 +31,8 @@
                 <a href="#/home">
                     <li>Client Data Inquiry</li>
                 </a>
-                <a href="#/editinfo">
+                <!-- <a href="#/editinfo"> -->
+				<a href="#clientDataUpdate">
                     <li>Client Data Update</li>
                 </a>
                 <a href="#/edu">
@@ -43,7 +44,10 @@
                 <a href="#/sci">
                     <li>Staff Contact Info</li>
                 </a>
-	      </ul>
+                <a href="#/myProfile">
+                    <li>My Profile</li>
+                </a>
+			</ul>
         </div>
         <div class="menu-group">
             <div class="menu-title">Task Center</div>
@@ -63,19 +67,78 @@
                     <li>My H-Graph</li>
                 </a>
                 <!-- <a href="#/parttime">
-                    <li>兼职签到</li>
+                    <li>Part Time Sign-in</li>
                 </a> -->
-<!--
             </ul>
         </div>
     </div>
 
-    <div id="dash-container">
-
-        <div ui-view></div>
-
+	<!-- Client Data Update -->
+	<div id="dash-frame" style="position: absolute; top: 50px; left: 200px;">
+	<div class="dash-area ng-scope">
+    <div id="clientDataUpdate" class="titlebar">
+        <div>Client Data Update</div>
     </div>
-</div> -->
+    <form class="ng-pristine ng-valid ng-valid-maxlength">
+        <div class="side">
+            <span class="label">Name</span><input ng-model="userInfo.name" placeholder="First Name + Last Name" class="ng-pristine ng-untouched ng-valid"><br>
+            <span class="label">Gender</span><input ng-model="userInfo.gender" class="ng-pristine ng-untouched ng-valid"><br>
+            <span class="label">Height</span><input ng-model="userInfo.QQ" placeholder="cm" class="ng-pristine ng-untouched ng-valid"><br>
+            <span class="label">Weight</span><input ng-model="userInfo.email" placeholder="Kg" class="ng-pristine ng-untouched ng-valid"><br>
+            <span class="label">Area</span>
+				<select ng-model="userInfo.Province" ng-options="value.name for value in provinceList" ng-change="onProvinceChange()" class="ng-pristine ng-untouched ng-valid">
+					<option value="0" selected="selected">Area1</option>
+					<option value="1" selected="selected">Area2</option>
+					<option value="2">Area3</option>
+					<option value="3">Area4</option>
+					<option value="4">Area5</option>
+				</select><br>
+            <span class="label">Neighbourhood</span>
+				<select style="width: 200px;" ng-model="userInfo.School" ng-options="value.name for value in schoolList" class="ng-pristine ng-untouched ng-valid">
+					<option value="0" selected="selected">Neighbourhood1</option>
+					<option value="1">Neighbourhood2</option>
+					<option value="2">Neighbourhood3</option>
+					<option value="3">Neighbourhood4</option>
+					<option value="4">Neighbourhood5</option>
+				</select><br>
+            <span class="label">Registered Date</span><input ng-model="userInfo.Address" class="ng-pristine ng-untouched ng-valid"><br>
+            <span class="label">Latest Visit Date</span><input ng-model="userInfo.FinishYear" class="ng-pristine ng-untouched ng-valid"><br><br>
+
+            <span class="label">Blood Pressure</span><input ng-model="userInfo.AccountName" class="ng-pristine ng-untouched ng-valid"><br>
+            <span class="label">Blood Sugar</span><input ng-model="userInfo.AccountCity" class="ng-pristine ng-untouched ng-valid"><br>
+            <span class="label">Hypertension</span>
+				<select ng-model="userInfo.AccountBank" class="ng-pristine ng-untouched ng-valid">
+					<option value="" selected="" class="ng-binding"></option>
+					<option value="Normal">Normal</option>
+					<option value="Sick">Sick</option>
+					<option value="Serious">Serious</option>
+				</select><br>
+            <span class="label">Urination Count</span><input ng-model="userInfo.AccountNumber" class="ng-pristine ng-untouched ng-valid"><br>
+            <span class="label">Dry Tongue</span><input ng-model="userInfo.AccountSubBank" class="ng-pristine ng-untouched ng-valid"><br>
+            <br>
+        </div>
+
+        <div class="side">
+            <span class="label">Cellphone</span><input ng-model="userInfo.Mail" class="ng-pristine ng-untouched ng-valid"><br>
+            <span class="label">Telephone</span><input ng-model="userInfo.SchoolArea" class="ng-pristine ng-untouched ng-valid"><br>
+            <span class="label">E-mail</span><input ng-model="userInfo.AreaStudentCount" class="ng-pristine ng-untouched ng-valid"><br>
+
+			<br>
+            <span class="label ng-binding">Comments</span><br>
+            <textarea style="height: 186px; width: 380px; font-size: 18px;" ng-model="userInfo.whoami" maxlength="140" class="ng-pristine ng-untouched ng-valid ng-valid-maxlength"></textarea>
+            <br>
+            <button class="done" ng-click="onClickEditInfo()">
+                Update
+            </button>
+        </div>
+    </form>
+	</div>
+	</div>
+
+    <!-- <div id="dash-container">
+        <div ui-view></div>
+    </div> -->
+</div>
 
 <!-- jQuery Version 1.11.0 -->
 <!-- <script src="lib/jquery-1.11.0.js"></script> -->
@@ -128,7 +191,6 @@
 <script src="js/controllers/QaCtrl.js"></script>
 <script src="js/controllers/PartTimeCtrl.js"></script>
 <script src="js/app.js"></script>
-
 
 
 <script type="text/javascript">
