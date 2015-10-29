@@ -28,23 +28,28 @@
         <div class="menu-group">
             <div class="menu-title">Data Base</div>
             <ul>
-                <a href="#/home">
+                <!-- <a href="#/home"> -->
+				<a href="#clientDataInquiry">
                     <li>Client Data Inquiry</li>
                 </a>
                 <!-- <a href="#/editinfo"> -->
 				<a href="#clientDataUpdate">
                     <li>Client Data Update</li>
                 </a>
-                <a href="#/edu">
+                <!-- <a href="#/edu"> -->
+				<a href="#neighStat">
                     <li>Neighborhood Statistics</li>
                 </a>
-                <a href="#/qa">
+                <!-- <a href="#/qa"> -->
+				<a href="#neighPred">
                     <li>Neighborhood Prediction</li>
                 </a>
-                <a href="#/sci">
+                <!-- <a href="#/sci"> -->
+				<a href="#sci">
                     <li>Staff Contact Info</li>
                 </a>
-                <a href="#/myProfile">
+                <!-- <a href="#/myProfile"> -->
+				<a href="#myProfile">
                     <li>My Profile</li>
                 </a>
 			</ul>
@@ -52,10 +57,12 @@
         <div class="menu-group">
             <div class="menu-title">Task Center</div>
             <ul>
-                <a href="#/shopxinao">
+                <!-- <a href="#/shopxinao"> -->
+				<a href="#assignTasks">
                     <li>Assign Tasks</li>
                 </a>
-                <a href="#/newshop">
+                <!-- <a href="#/newshop"> -->
+				<a href="#myTasks">
                     <li>My Tasks</li>
                 </a>
             </ul>
@@ -73,15 +80,148 @@
         </div>
     </div>
 
+	
+	<!-- Client Data Inquiry -->
+	<div id="dash-frame" style="position: absolute; top: 10px; left: 200px;">
+	<div class="dash-area ng-scope">
+    <div id="clientDataInquiry" class="titlebar">
+        <div><br><br><br>Client Data Inquiry</div>
+    </div>
+	<p class="label">Fill in one or several blanks below to search for target Patients</p>
+    <form class="ng-pristine ng-valid ng-valid-maxlength">
+        <div class="side">
+            <span class="label">Name</span><input ng-model="userInfo.name" placeholder="First Name or Last Name" class="ng-pristine ng-untouched ng-valid"><br>
+            <span class="label">Area</span>
+				<select ng-model="userInfo.Province" ng-options="value.name for value in provinceList" ng-change="onProvinceChange()" class="ng-pristine ng-untouched ng-valid">
+					<option value="0" selected="selected">Area1</option>
+					<option value="1" selected="selected">Area2</option>
+					<option value="2">Area3</option>
+					<option value="3">Area4</option>
+					<option value="4">Area5</option>
+				</select><br>
+            <span class="label">Neighbourhood</span>
+				<select style="width: 200px;" ng-model="userInfo.School" ng-options="value.name for value in schoolList" class="ng-pristine ng-untouched ng-valid">
+					<option value="0" selected="selected">Neighbourhood1</option>
+					<option value="1">Neighbourhood2</option>
+					<option value="2">Neighbourhood3</option>
+					<option value="3">Neighbourhood4</option>
+					<option value="4">Neighbourhood5</option>
+				</select><br>
+            <span class="label">Registered Date</span><input ng-model="userInfo.Address" class="ng-pristine ng-untouched ng-valid"><br>
+			<br>
+            <button class="done" ng-click="onClickEditInfo()">
+                Search
+            </button><br>
+			<br>
+		</div>
+
+        <div class="side">
+            <span class="label">Hypertension Lv.</span>
+				<select ng-model="userInfo.AccountBank" class="ng-pristine ng-untouched ng-valid">
+					<option value="" selected="" class="ng-binding"></option>
+					<option value="Normal">Normal</option>
+					<option value="Sick">Sick</option>
+					<option value="Serious">Serious</option>
+				</select><br>
+            <span class="label">Diabetes Lv.</span>
+				<select ng-model="userInfo.AccountBank" class="ng-pristine ng-untouched ng-valid">
+					<option value="" selected="" class="ng-binding"></option>
+					<option value="Normal">Normal</option>
+					<option value="Sick">Sick</option>
+					<option value="Serious">Serious</option>
+				</select><br>
+        </div>
+	</form>
+			
+	<table border="1" style="width:100%; font-size:12px;">
+		<tbody>
+		<tr>
+			<th>ptnt_rgstrtn_id_tmp</th>
+			<th>gndr</th>
+			<th>dob</th>
+			<th>location_master_id</th>
+			<th>location</th>
+			<th>Area</th>
+			<th>City</th>
+			<th>State</th>
+			<th>cntry</th>
+			<th>Hypertension</th>
+			<th>Diabetes</th>
+		</tr>
+		<!-- ngRepeat: line in tdLines -->
+		<tr ng-repeat="line in tdLines" class="ng-scope">
+			<td class="ng-binding">1</td>
+			<td class="ng-binding">aaaaa</td>
+			<td class="ng-binding">aaa</td>
+			<td class="ng-binding">59</td>
+			<td class="ng-binding">0</td>
+			<td class="ng-binding">0</td>
+			<td class="ng-binding">0</td>
+			<td class="ng-binding">0</td>
+			<td class="ng-binding">0</td>
+			<td class="ng-binding">0</td>
+			<td class="ng-binding">0</td>
+			<td class="ng-binding">0</td>
+			<td class="ng-binding">0</td>
+			<td class="ng-binding">0</td>
+			<td class="ng-binding">0</td>
+			<td class="ng-binding">59</td>
+		</tr>
+		<tr ng-repeat="line in tdLines" class="ng-scope">
+			<td class="ng-binding">1003</td>
+			<td class="ng-binding">bbbbb</td>
+			<td class="ng-binding">bbb</td>
+			<td class="ng-binding">55</td>
+			<td class="ng-binding">0</td>
+			<td class="ng-binding">0</td>
+			<td class="ng-binding">0</td>
+			<td class="ng-binding">0</td>
+			<td class="ng-binding">0</td>
+			<td class="ng-binding">0</td>
+			<td class="ng-binding">0</td>
+			<td class="ng-binding">0</td>
+			<td class="ng-binding">0</td>
+			<td class="ng-binding">0</td>
+			<td class="ng-binding">0</td>
+			<td class="ng-binding">55</td>
+		</tr>
+		<tr ng-repeat="line in tdLines" class="ng-scope">
+			<td class="ng-binding">1007</td>
+			<td class="ng-binding">cccccc</td>
+			<td class="ng-binding">ccc</td>
+			<td class="ng-binding">6</td>
+			<td class="ng-binding">0</td>
+			<td class="ng-binding">0</td>
+			<td class="ng-binding">0</td>
+			<td class="ng-binding">0</td>
+			<td class="ng-binding">0</td>
+			<td class="ng-binding">0</td>
+			<td class="ng-binding">0</td>
+			<td class="ng-binding">0</td>
+			<td class="ng-binding">0</td>
+			<td class="ng-binding">0</td>
+			<td class="ng-binding">0</td>
+			<td class="ng-binding">6</td>
+		</tr>
+	</tbody>
+	</table>	
+	<p class="label">PatientID_1</p><br>
+	<p class="label">PatientID_2</p><br>
+	<p class="label">PatientID_3</p><br>
+
+	</div>
+	</div>
+
+	
 	<!-- Client Data Update -->
-	<div id="dash-frame" style="position: absolute; top: 50px; left: 200px;">
+	<div id="dash-frame" style="position: absolute; top: 850px; left: 200px;">
 	<div class="dash-area ng-scope">
     <div id="clientDataUpdate" class="titlebar">
-        <div>Client Data Update</div>
+        <div><br><br><br>Client Data Update</div>
     </div>
     <form class="ng-pristine ng-valid ng-valid-maxlength">
         <div class="side">
-            <span class="label">Name</span><input ng-model="userInfo.name" placeholder="First Name + Last Name" class="ng-pristine ng-untouched ng-valid"><br>
+            <span class="label">Full Name</span><input ng-model="userInfo.name" placeholder="First Name + Last Name" class="ng-pristine ng-untouched ng-valid"><br>
             <span class="label">Gender</span><input ng-model="userInfo.gender" class="ng-pristine ng-untouched ng-valid"><br>
             <span class="label">Height</span><input ng-model="userInfo.QQ" placeholder="cm" class="ng-pristine ng-untouched ng-valid"><br>
             <span class="label">Weight</span><input ng-model="userInfo.email" placeholder="Kg" class="ng-pristine ng-untouched ng-valid"><br>
@@ -135,6 +275,254 @@
 	</div>
 	</div>
 
+	
+	<!-- Neighbourhood Statistics -->
+	<div id="dash-frame" style="position: absolute; top: 1750px; left: 200px;">
+	<div class="dash-area ng-scope">
+    <div id="neighStat" class="titlebar">
+        <div><br><br><br>Neighbourhood Statistics</div>
+    </div>
+	<p class="label">Statistics of Hypertension</p>
+    <form class="ng-pristine ng-valid ng-valid-maxlength">
+		<img src="img/Neigh Stat.png" alt="Neigh Stat1">
+    </form>
+	<br>
+	
+	<p class="label">Statistics of Diabetes</p>
+    <form class="ng-pristine ng-valid ng-valid-maxlength">
+		<img src="img/???.png" alt="Neigh Stat2">
+    </form>
+	<br>
+
+	</div>
+	</div>	
+	
+	
+	<!-- Neighbourhood Predictions -->
+	<div id="dash-frame" style="position: absolute; top: 2550px; left: 200px;">
+	<div class="dash-area ng-scope">
+    <div id="neighPred" class="titlebar">
+        <div><br><br><br>Neighbourhood Predictions</div>
+    </div>
+	<p class="label">Predictions of Hypertension</p>
+    <form class="ng-pristine ng-valid ng-valid-maxlength">
+		<img src="img/Neigh Pred.png" alt="Neigh Pred1">
+    </form>
+	<br>
+	
+	<p class="label">Predictions of Diabetes</p>
+    <form class="ng-pristine ng-valid ng-valid-maxlength">
+		<img src="img/???.png" alt="Neigh Pred2">
+    </form>
+	<br>
+	</div>
+	</div>
+
+	
+	<!-- Staff Contact Info -->
+	<div id="dash-frame" style="position: absolute; top: 3350px; left: 200px;">
+	<div class="dash-area ng-scope">
+    <div id="sci" class="titlebar">
+        <div><br><br><br>Staff Contact Info</div>
+    </div>
+	<div>
+        <p style="font-size:80%; color: black"><b>James Bond &nbsp; &nbsp;</b>|&nbsp; &nbsp; Doctor<br></p>
+        <p style="font-size:80%; color: black">Responsible Area:</p>
+        <p style="font-size:80%; color: black">Cellphone:&nbsp;&nbsp;|&nbsp;&nbsp;Telephone:</p>
+        <p style="font-size:80%; color: black">E-mail:</p>
+        <p style="font-size:80%; color: black">Address:</p>
+        <button style="background-color: #00ce9b" ng-click="applyPs(am.id)">&nbsp;&nbsp; Message &nbsp;&nbsp;</button>
+        <!--&nbsp;
+        <button style="background-color: #245269" ng-click="denyPs(am.id)">&nbsp;&nbsp; Declined &nbsp;&nbsp;</button>
+        <br>-->
+        <hr>
+        <br>
+    </div>
+	
+	<div>
+        <p style="font-size:80%; color: black"><b>Batman &nbsp; &nbsp;</b>|&nbsp; &nbsp; Social Worker<br></p>
+        <p style="font-size:80%; color: black">Responsible Area:</p>
+        <p style="font-size:80%; color: black">Cellphone:&nbsp;&nbsp;|&nbsp;&nbsp;Telephone:</p>
+        <p style="font-size:80%; color: black">E-mail:</p>
+        <p style="font-size:80%; color: black">Address:</p>
+        <button style="background-color: #00ce9b" ng-click="applyPs(am.id)">&nbsp;&nbsp; Message &nbsp;&nbsp;</button>
+        <hr>
+        <br>
+    </div>
+	
+	<div>
+        <p style="font-size:80%; color: black"><b>Ironman &nbsp; &nbsp;</b>|&nbsp; &nbsp; Social Worker<br></p>
+        <p style="font-size:80%; color: black">Responsible Area:</p>
+        <p style="font-size:80%; color: black">Cellphone:&nbsp;&nbsp;|&nbsp;&nbsp;Telephone:</p>
+        <p style="font-size:80%; color: black">E-mail:</p>
+        <p style="font-size:80%; color: black">Address:</p>
+        <button style="background-color: #00ce9b" ng-click="applyPs(am.id)">&nbsp;&nbsp; Message &nbsp;&nbsp;</button>
+        <hr>
+        <br>
+    </div>	
+	
+	</div>
+	</div>
+	
+
+	<!-- My Profile -->
+	<div id="dash-frame" style="position: absolute; top: 4200px; left: 200px;">
+	<div class="dash-area ng-scope">
+    <div id="myProfile" class="titlebar">
+        <div><br><br><br>My Profile</div>
+    </div>
+    <form class="ng-pristine ng-valid ng-valid-maxlength">
+        <div class="side">
+            <span class="label">Full Name</span><br>
+            <span class="label">Gender</span><br>
+            <span class="label">Responsible Area</span>
+				<select ng-model="userInfo.Province" ng-options="value.name for value in provinceList" ng-change="onProvinceChange()" class="ng-pristine ng-untouched ng-valid">
+					<option value="0" selected="selected">Area1</option>
+					<option value="1" selected="selected">Area2</option>
+					<option value="2">Area3</option>
+					<option value="3">Area4</option>
+					<option value="4">Area5</option>
+				</select><br>
+            <span class="label">Neighbourhood</span>
+				<select style="width: 200px;" ng-model="userInfo.School" ng-options="value.name for value in schoolList" class="ng-pristine ng-untouched ng-valid">
+					<option value="0" selected="selected">Neighbourhood1</option>
+					<option value="1">Neighbourhood2</option>
+					<option value="2">Neighbourhood3</option>
+					<option value="3">Neighbourhood4</option>
+					<option value="4">Neighbourhood5</option>
+				</select><br>
+            <span class="label">Cellphone</span><input ng-model="userInfo.Address" class="ng-pristine ng-untouched ng-valid"><br>
+            <span class="label">Telephone</span><input ng-model="userInfo.FinishYear" class="ng-pristine ng-untouched ng-valid"><br>
+            <span class="label">E-mail</span><input ng-model="userInfo.AccountName" class="ng-pristine ng-untouched ng-valid"><br>
+            <span class="label">Address 1</span><input ng-model="userInfo.AccountCity" class="ng-pristine ng-untouched ng-valid"><br>
+            <span class="label">Address 2</span><input ng-model="userInfo.AccountCity" class="ng-pristine ng-untouched ng-valid"><br><br>
+            <button class="done" ng-click="onClickEditInfo()">
+                Update
+            </button>
+    </form>
+	</div>
+	</div>
+    </div>
+
+	
+	<!-- Assign Tasks -->
+	<div id="dash-frame" style="position: absolute; top: 5000px; left: 200px;">
+	<div class="dash-area ng-scope">
+    <div id="assignTasks" class="titlebar">
+        <div><br><br><br>Assign Tasks</div>
+    </div>
+    <form class="ng-pristine ng-valid ng-valid-maxlength">
+        <div class="side">
+            <span class="label">Assignee</span>
+				<select ng-model="userInfo.AccountBank" class="ng-pristine ng-untouched ng-valid">
+					<option value="" selected="" class="ng-binding"></option>
+					<option value="Normal">Doctor</option>
+					<option value="Sick">Social Worker</option>
+					<option value="Serious">Developer</option>
+				</select><br>
+			<span class="label">&nbsp;&nbsp;&nbsp;</span>
+				<select ng-model="userInfo.AccountBank" class="ng-pristine ng-untouched ng-valid">
+					<option value="" selected="" class="ng-binding"></option>
+					<option value="Name 1">Name 1</option>
+					<option value="Name 2">Name 2</option>
+					<option value="Name 3">Name 3</option>
+					<option value="Name 4">Name 4</option>
+					<option value="Name 5">Name 5</option>
+					</select><br>
+            <span class="label">Area</span>
+				<select ng-model="userInfo.Province" ng-options="value.name for value in provinceList" ng-change="onProvinceChange()" class="ng-pristine ng-untouched ng-valid">
+					<option value="0" selected="selected">Area1</option>
+					<option value="1" selected="selected">Area2</option>
+					<option value="2">Area3</option>
+					<option value="3">Area4</option>
+					<option value="4">Area5</option>
+				</select><br>
+            <span class="label">Neighbourhood</span>
+				<select style="width: 200px;" ng-model="userInfo.School" ng-options="value.name for value in schoolList" class="ng-pristine ng-untouched ng-valid">
+					<option value="0" selected="selected">Neighbourhood1</option>
+					<option value="1">Neighbourhood2</option>
+					<option value="2">Neighbourhood3</option>
+					<option value="3">Neighbourhood4</option>
+					<option value="4">Neighbourhood5</option>
+				</select><br>
+            <span class="label">Patient</span>
+				<select style="width: 200px;" ng-model="userInfo.School" ng-options="value.name for value in schoolList" class="ng-pristine ng-untouched ng-valid">
+					<option value="0" selected="selected"></option>
+					<option value="1"></option>
+					<option value="2"></option>
+					<option value="3"></option>
+					<option value="4"></option>
+				</select><br>
+            <span class="label">Task Date</span><input ng-model="userInfo.AccountCity" class="ng-pristine ng-untouched ng-valid"><br>
+			<span class="label">Task Category</span>
+				<select ng-model="userInfo.AccountBank" class="ng-pristine ng-untouched ng-valid">
+					<option value="" selected="" class="ng-binding"></option>
+					<option value="Normal">Visit</option>
+					<option value="Sick">Medicine</option>
+					<option value="Serious">Injection</option>
+				</select><br><br>
+            <button class="done" ng-click="onClickEditInfo()">
+                Assign
+            </button>
+    </form>
+	</div>
+	</div>
+    </div>
+
+
+	<!-- My Tasks -->
+	<div id="dash-frame" style="position: absolute; top: 5800px; left: 200px;">
+	<div class="dash-area ng-scope">
+    <div id="myTasks" class="titlebar">
+        <div><br><br><br>My Tasks</div>
+    </div>
+	<div>
+        <p style="font-size:80%; color: black">Patient Name &nbsp; &nbsp;|&nbsp; &nbsp; Task Category<br></p>
+        <p style="font-size:80%; color: black">Area &nbsp; &nbsp;|&nbsp; &nbsp; Neighbourhood</p>
+        <p style="font-size:80%; color: black">Address:</p>
+        <p style="font-size:80%; color: black">Designated Date:</p>
+        <button style="background-color: #00ce9b" ng-click="applyPs(am.id)">&nbsp;&nbsp; Comment &nbsp;&nbsp;</button>
+        &nbsp;
+        <button style="background-color: #245269" ng-click="denyPs(am.id)">&nbsp;&nbsp; Done &nbsp;&nbsp;</button>
+        <br>
+        <hr>
+        <br>
+    </div>
+	
+	<div>
+        <p style="font-size:80%; color: black">Patient Name &nbsp; &nbsp;|&nbsp; &nbsp; Task Category<br></p>
+        <p style="font-size:80%; color: black">Area &nbsp; &nbsp;|&nbsp; &nbsp; Neighbourhood</p>
+        <p style="font-size:80%; color: black">Address:</p>
+        <p style="font-size:80%; color: black">Designated Date:</p>
+        <button style="background-color: #00ce9b" ng-click="applyPs(am.id)">&nbsp;&nbsp; Comment &nbsp;&nbsp;</button>
+        &nbsp;
+        <button style="background-color: #245269" ng-click="denyPs(am.id)">&nbsp;&nbsp; Done &nbsp;&nbsp;</button>
+        <br>
+        <hr>
+        <br>
+    </div>
+
+	<div>
+        <p style="font-size:80%; color: black">Patient Name &nbsp; &nbsp;|&nbsp; &nbsp; Task Category<br></p>
+        <p style="font-size:80%; color: black">Area &nbsp; &nbsp;|&nbsp; &nbsp; Neighbourhood</p>
+        <p style="font-size:80%; color: black">Address:</p>
+        <p style="font-size:80%; color: black">Designated Date:</p>
+        <button style="background-color: #00ce9b" ng-click="applyPs(am.id)">&nbsp;&nbsp; Comment &nbsp;&nbsp;</button>
+        &nbsp;
+        <button style="background-color: #245269" ng-click="denyPs(am.id)">&nbsp;&nbsp; Done &nbsp;&nbsp;</button>
+        <br>
+        <hr>
+        <br>
+    </div>
+	
+	</div>
+	</div>
+
+
+
+
+
+	
     <!-- <div id="dash-container">
         <div ui-view></div>
     </div> -->
@@ -172,7 +560,6 @@
 
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 
-
 <script src="js/services/DataServices.js"></script>
 <script src="js/services/AuthorServices.js"></script>
 <script src="js/services/SharedServices.js"></script>
@@ -191,7 +578,6 @@
 <script src="js/controllers/QaCtrl.js"></script>
 <script src="js/controllers/PartTimeCtrl.js"></script>
 <script src="js/app.js"></script>
-
 
 <script type="text/javascript">
     $(document).ready(function () {
