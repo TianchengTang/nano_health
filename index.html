@@ -40,10 +40,6 @@
 				<a href="#neighStat">
                     <li>Neighborhood Statistics</li>
                 </a>
-                <!-- <a href="#/qa"> -->
-				<a href="#neighPred">
-                    <li>Neighborhood Prediction</li>
-                </a>
                 <!-- <a href="#/sci"> -->
 				<a href="#sci">
                     <li>Staff Contact Info</li>
@@ -65,7 +61,11 @@
 				<a href="#myTasks">
                     <li>My Tasks</li>
                 </a>
-            </ul>
+                <!-- <a href="#/genRegistrationKey"> -->
+				<a href="#genRegistrationKey">
+                    <li>Generate Reg Key</li>
+                </a>
+			</ul>
         </div>
         <div class="menu-group">
             <div class="menu-title">Personal Health</div>
@@ -87,10 +87,15 @@
     <div id="clientDataInquiry" class="titlebar">
         <div><br><br><br>Client Data Inquiry</div>
     </div>
-	<p class="label">Fill in one or several blanks below to search for target Patients</p>
+	<p style="font-size: 20px; color: red">Dashboard Authorities:</p>
+	<p style="font-size: 12px; color: red">(1) Doctors: All except H-Graph</p>
+	<p style="font-size: 12px; color: red">(2) Social Workers: Exclude: Client Inquiry, Neighbourhood Stat, Assign Tasks, H-Graph</p>
+	<p style="font-size: 12px; color: red">(3) Patients: Only H-Graph</p>
+	<br>
+	<p style="font-size: 12px; color: red">If all the blanks are empty, then show this after clicking the search button: "Please fill in something"</p>
     <form class="ng-pristine ng-valid ng-valid-maxlength">
         <div class="side">
-            <span class="label">Name</span><input ng-model="userInfo.name" placeholder="First Name or Last Name" class="ng-pristine ng-untouched ng-valid"><br>
+            <span class="label">Patient ID</span><input ng-model="userInfo.name" class="ng-pristine ng-untouched ng-valid"><br>
             <span class="label">Area</span>
 				<select ng-model="userInfo.Province" ng-options="value.name for value in provinceList" ng-change="onProvinceChange()" class="ng-pristine ng-untouched ng-valid">
 					<option value="0" selected="selected">Area1</option>
@@ -99,15 +104,18 @@
 					<option value="3">Area4</option>
 					<option value="4">Area5</option>
 				</select><br>
-            <span class="label">Neighbourhood</span>
+            <span class="label">Location</span>
 				<select style="width: 200px;" ng-model="userInfo.School" ng-options="value.name for value in schoolList" class="ng-pristine ng-untouched ng-valid">
-					<option value="0" selected="selected">Neighbourhood1</option>
-					<option value="1">Neighbourhood2</option>
-					<option value="2">Neighbourhood3</option>
-					<option value="3">Neighbourhood4</option>
-					<option value="4">Neighbourhood5</option>
+					<option value="0" selected="selected">Location1</option>
+					<option value="1">Location2</option>
+					<option value="2">Location3</option>
+					<option value="3">Location4</option>
+					<option value="4">Location5</option>
 				</select><br>
-            <span class="label">Registered Date</span><input ng-model="userInfo.Address" class="ng-pristine ng-untouched ng-valid"><br>
+            <span class="label">Last Visit After</span><input ng-model="userInfo.Address" class="ng-pristine ng-untouched ng-valid"><br>
+			<p style="font-size: 12px; color: red">Date Controller</p>
+            <span class="label">Last Visit Before</span><input ng-model="userInfo.Address" class="ng-pristine ng-untouched ng-valid"><br>
+			<p style="font-size: 12px; color: red">Date Controller</p>
 			<br>
             <button class="done" ng-click="onClickEditInfo()">
                 Search
@@ -116,19 +124,17 @@
 		</div>
 
         <div class="side">
-            <span class="label">Hypertension Lv.</span>
+            <span class="label">Hypertension</span>
 				<select ng-model="userInfo.AccountBank" class="ng-pristine ng-untouched ng-valid">
 					<option value="" selected="" class="ng-binding"></option>
-					<option value="Normal">Normal</option>
-					<option value="Sick">Sick</option>
-					<option value="Serious">Serious</option>
+					<option value="Normal">Yes</option>
+					<option value="Sick">No</option>
 				</select><br>
-            <span class="label">Diabetes Lv.</span>
+            <span class="label">Diabetes</span>
 				<select ng-model="userInfo.AccountBank" class="ng-pristine ng-untouched ng-valid">
 					<option value="" selected="" class="ng-binding"></option>
-					<option value="Normal">Normal</option>
-					<option value="Sick">Sick</option>
-					<option value="Serious">Serious</option>
+					<option value="Normal">Yes</option>
+					<option value="Sick">No</option>
 				</select><br>
         </div>
 	</form>
@@ -136,114 +142,55 @@
 	<table border="1" style="width:100%; font-size:12px;">
 		<tbody>
 		<tr>
-			<th>ptnt_rgstrtn_id_tmp</th>
-			<th>gndr</th>
-			<th>dob</th>
-			<th>location_master_id</th>
-			<th>location</th>
+			<th>Patient ID</th>
+			<th>Gender</th>
+			<th>Age</th>
+			<th>Location</th>
 			<th>Area</th>
 			<th>City</th>
-			<th>State</th>
-			<th>cntry</th>
 			<th>Hypertension</th>
+			<th>Blood Pressure</th>
+			<th>Blood Sugar</th>			
 			<th>Diabetes</th>
-		</tr>
-		<!-- ngRepeat: line in tdLines -->
-		<tr ng-repeat="line in tdLines" class="ng-scope">
-			<td class="ng-binding">1</td>
-			<td class="ng-binding">aaaaa</td>
-			<td class="ng-binding">aaa</td>
-			<td class="ng-binding">59</td>
-			<td class="ng-binding">0</td>
-			<td class="ng-binding">0</td>
-			<td class="ng-binding">0</td>
-			<td class="ng-binding">0</td>
-			<td class="ng-binding">0</td>
-			<td class="ng-binding">0</td>
-			<td class="ng-binding">0</td>
-			<td class="ng-binding">0</td>
-			<td class="ng-binding">0</td>
-			<td class="ng-binding">0</td>
-			<td class="ng-binding">0</td>
-			<td class="ng-binding">59</td>
-		</tr>
-		<tr ng-repeat="line in tdLines" class="ng-scope">
-			<td class="ng-binding">1003</td>
-			<td class="ng-binding">bbbbb</td>
-			<td class="ng-binding">bbb</td>
-			<td class="ng-binding">55</td>
-			<td class="ng-binding">0</td>
-			<td class="ng-binding">0</td>
-			<td class="ng-binding">0</td>
-			<td class="ng-binding">0</td>
-			<td class="ng-binding">0</td>
-			<td class="ng-binding">0</td>
-			<td class="ng-binding">0</td>
-			<td class="ng-binding">0</td>
-			<td class="ng-binding">0</td>
-			<td class="ng-binding">0</td>
-			<td class="ng-binding">0</td>
-			<td class="ng-binding">55</td>
-		</tr>
-		<tr ng-repeat="line in tdLines" class="ng-scope">
-			<td class="ng-binding">1007</td>
-			<td class="ng-binding">cccccc</td>
-			<td class="ng-binding">ccc</td>
-			<td class="ng-binding">6</td>
-			<td class="ng-binding">0</td>
-			<td class="ng-binding">0</td>
-			<td class="ng-binding">0</td>
-			<td class="ng-binding">0</td>
-			<td class="ng-binding">0</td>
-			<td class="ng-binding">0</td>
-			<td class="ng-binding">0</td>
-			<td class="ng-binding">0</td>
-			<td class="ng-binding">0</td>
-			<td class="ng-binding">0</td>
-			<td class="ng-binding">0</td>
-			<td class="ng-binding">6</td>
+			<th>Urination Count</th>
 		</tr>
 	</tbody>
 	</table>	
 	<p class="label">PatientID_1</p><br>
 	<p class="label">PatientID_2</p><br>
-	<p class="label">PatientID_3</p><br>
 
+	<p style="font-size: 12px; color: red">Here we only show some selected data of the Patients who meet the Search Criterion</p>
+	<p style="font-size: 12px; color: red">If too many people, then multi-pages</p>
+	<br>
+	<button class="done" ng-click="onClickEditInfo()">
+        Show More Detail
+    </button>
+	<p style="font-size: 12px; color: red">On a new tab, showing all the data columns of the Patients listed above</p>
+	
 	</div>
 	</div>
 
 	
 	<!-- Client Data Update -->
-	<div id="dash-frame" style="position: absolute; top: 850px; left: 200px;">
+	<div id="dash-frame" style="position: absolute; top: 1250px; left: 200px;">
 	<div class="dash-area ng-scope">
     <div id="clientDataUpdate" class="titlebar">
         <div><br><br><br>Client Data Update</div>
     </div>
+	<p style="font-size: 12px; color: red">After input the Patient ID, and press the "Find" Button, all the following data of 
+	 this patient will be automatically shown up</p>
+	<p style="font-size: 12px; color: red">If the input Patient ID does not exist, we will inform the user in a red sentence</p>
     <form class="ng-pristine ng-valid ng-valid-maxlength">
         <div class="side">
-            <span class="label">Full Name</span><input ng-model="userInfo.name" placeholder="First Name + Last Name" class="ng-pristine ng-untouched ng-valid"><br>
-            <span class="label">Gender</span><input ng-model="userInfo.gender" class="ng-pristine ng-untouched ng-valid"><br>
-            <span class="label">Height</span><input ng-model="userInfo.QQ" placeholder="cm" class="ng-pristine ng-untouched ng-valid"><br>
-            <span class="label">Weight</span><input ng-model="userInfo.email" placeholder="Kg" class="ng-pristine ng-untouched ng-valid"><br>
-            <span class="label">Area</span>
-				<select ng-model="userInfo.Province" ng-options="value.name for value in provinceList" ng-change="onProvinceChange()" class="ng-pristine ng-untouched ng-valid">
-					<option value="0" selected="selected">Area1</option>
-					<option value="1" selected="selected">Area2</option>
-					<option value="2">Area3</option>
-					<option value="3">Area4</option>
-					<option value="4">Area5</option>
-				</select><br>
-            <span class="label">Neighbourhood</span>
-				<select style="width: 200px;" ng-model="userInfo.School" ng-options="value.name for value in schoolList" class="ng-pristine ng-untouched ng-valid">
-					<option value="0" selected="selected">Neighbourhood1</option>
-					<option value="1">Neighbourhood2</option>
-					<option value="2">Neighbourhood3</option>
-					<option value="3">Neighbourhood4</option>
-					<option value="4">Neighbourhood5</option>
-				</select><br>
-            <span class="label">Registered Date</span><input ng-model="userInfo.Address" class="ng-pristine ng-untouched ng-valid"><br>
-            <span class="label">Latest Visit Date</span><input ng-model="userInfo.FinishYear" class="ng-pristine ng-untouched ng-valid"><br><br>
-
+			<span class="label">Patient ID</span><input ng-model="userInfo.name" class="ng-pristine ng-untouched ng-valid" style="width:30%">
+			<button class="done" style="width:12%" ng-click="onClickEditInfo()">
+                Find
+            </button><br>
+            <span class="label">First Name</span><input ng-model="userInfo.name" class="ng-pristine ng-untouched ng-valid"><br>
+            <span class="label">Last Name</span><input ng-model="userInfo.name" class="ng-pristine ng-untouched ng-valid"><br>    
+			<span class="label">Gender</span><input ng-model="userInfo.gender" class="ng-pristine ng-untouched ng-valid"><br>
+            <span class="label">Height (cm)</span><input ng-model="userInfo.QQ" class="ng-pristine ng-untouched ng-valid"><br>
+            <span class="label">Weight (Kg)</span><input ng-model="userInfo.email" class="ng-pristine ng-untouched ng-valid"><br>
             <span class="label">Blood Pressure</span><input ng-model="userInfo.AccountName" class="ng-pristine ng-untouched ng-valid"><br>
             <span class="label">Blood Sugar</span><input ng-model="userInfo.AccountCity" class="ng-pristine ng-untouched ng-valid"><br>
             <span class="label">Hypertension</span>
@@ -259,9 +206,22 @@
         </div>
 
         <div class="side">
-            <span class="label">Cellphone</span><input ng-model="userInfo.Mail" class="ng-pristine ng-untouched ng-valid"><br>
-            <span class="label">Telephone</span><input ng-model="userInfo.SchoolArea" class="ng-pristine ng-untouched ng-valid"><br>
-            <span class="label">E-mail</span><input ng-model="userInfo.AreaStudentCount" class="ng-pristine ng-untouched ng-valid"><br>
+            <span class="label">Area</span>
+				<select ng-model="userInfo.Province" ng-options="value.name for value in provinceList" ng-change="onProvinceChange()" class="ng-pristine ng-untouched ng-valid">
+					<option value="0" selected="selected">Area1</option>
+					<option value="1" selected="selected">Area2</option>
+					<option value="2">Area3</option>
+					<option value="3">Area4</option>
+					<option value="4">Area5</option>
+				</select><br>
+            <span class="label">Location</span>
+				<select style="width: 200px;" ng-model="userInfo.School" ng-options="value.name for value in schoolList" class="ng-pristine ng-untouched ng-valid">
+					<option value="0" selected="selected">Location1</option>
+					<option value="1">Location2</option>
+					<option value="2">Location3</option>
+					<option value="3">Location4</option>
+					<option value="4">Location5</option>
+				</select><br>
 
 			<br>
             <span class="label ng-binding">Comments</span><br>
@@ -277,18 +237,27 @@
 
 	
 	<!-- Neighbourhood Statistics -->
-	<div id="dash-frame" style="position: absolute; top: 1750px; left: 200px;">
+	<div id="dash-frame" style="position: absolute; top: 2150px; left: 200px;">
 	<div class="dash-area ng-scope">
     <div id="neighStat" class="titlebar">
         <div><br><br><br>Neighbourhood Statistics</div>
     </div>
-	<p class="label">Statistics of Hypertension</p>
+	
+	<p class="label">General Health Condition (Good / Normal / Bad) by Locations</p>
+    <p style="font-size: 12px; color: red">The overall health condition of a patient is calculated and graded by our own algorithm
+	 developed based on H-Graph</p>
+	<form class="ng-pristine ng-valid ng-valid-maxlength">
+		<img src="img/????.png" alt="Neigh Stat1">
+    </form>
+	<br>
+	
+	<p class="label">Hypertension Condition (Suffered / High Risk / Low Risk) by Locations</p>
     <form class="ng-pristine ng-valid ng-valid-maxlength">
 		<img src="img/Neigh Stat.png" alt="Neigh Stat1">
     </form>
 	<br>
 	
-	<p class="label">Statistics of Diabetes</p>
+	<p class="label">Diabetes Condition (Suffered / High Risk / Low Risk) by Locations</p>
     <form class="ng-pristine ng-valid ng-valid-maxlength">
 		<img src="img/???.png" alt="Neigh Stat2">
     </form>
@@ -296,27 +265,6 @@
 
 	</div>
 	</div>	
-	
-	
-	<!-- Neighbourhood Predictions -->
-	<div id="dash-frame" style="position: absolute; top: 2550px; left: 200px;">
-	<div class="dash-area ng-scope">
-    <div id="neighPred" class="titlebar">
-        <div><br><br><br>Neighbourhood Predictions</div>
-    </div>
-	<p class="label">Predictions of Hypertension</p>
-    <form class="ng-pristine ng-valid ng-valid-maxlength">
-		<img src="img/Neigh Pred.png" alt="Neigh Pred1">
-    </form>
-	<br>
-	
-	<p class="label">Predictions of Diabetes</p>
-    <form class="ng-pristine ng-valid ng-valid-maxlength">
-		<img src="img/???.png" alt="Neigh Pred2">
-    </form>
-	<br>
-	</div>
-	</div>
 
 	
 	<!-- Staff Contact Info -->
@@ -325,10 +273,13 @@
     <div id="sci" class="titlebar">
         <div><br><br><br>Staff Contact Info</div>
     </div>
+	<p style="font-size: 12px; color: red">The default tab is the "Star" tab, showing the leadership of the organization, ordered in alphabetic.<br>
+	 The other tabs are also ordered in alphabetic, if clicked, they will not care about whether someone belongs to the leadership or not</p>	
+	<p style="font-size: 15px; color: red">&#9733 A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</p>
 	<div>
         <p style="font-size:80%; color: black"><b>James Bond &nbsp; &nbsp;</b>|&nbsp; &nbsp; Doctor<br></p>
         <p style="font-size:80%; color: black">Responsible Area:</p>
-        <p style="font-size:80%; color: black">Cellphone:&nbsp;&nbsp;|&nbsp;&nbsp;Telephone:</p>
+        <p style="font-size:80%; color: black">Cellphone:</p>
         <p style="font-size:80%; color: black">E-mail:</p>
         <p style="font-size:80%; color: black">Address:</p>
         <button style="background-color: #00ce9b" ng-click="applyPs(am.id)">&nbsp;&nbsp; Message &nbsp;&nbsp;</button>
@@ -350,17 +301,6 @@
         <br>
     </div>
 	
-	<div>
-        <p style="font-size:80%; color: black"><b>Ironman &nbsp; &nbsp;</b>|&nbsp; &nbsp; Social Worker<br></p>
-        <p style="font-size:80%; color: black">Responsible Area:</p>
-        <p style="font-size:80%; color: black">Cellphone:&nbsp;&nbsp;|&nbsp;&nbsp;Telephone:</p>
-        <p style="font-size:80%; color: black">E-mail:</p>
-        <p style="font-size:80%; color: black">Address:</p>
-        <button style="background-color: #00ce9b" ng-click="applyPs(am.id)">&nbsp;&nbsp; Message &nbsp;&nbsp;</button>
-        <hr>
-        <br>
-    </div>	
-	
 	</div>
 	</div>
 	
@@ -373,7 +313,8 @@
     </div>
     <form class="ng-pristine ng-valid ng-valid-maxlength">
         <div class="side">
-            <span class="label">Full Name</span><br>
+            <span class="label">First Name</span><br>
+            <span class="label">Last Name</span><br>
             <span class="label">Gender</span><br>
             <span class="label">Responsible Area</span>
 				<select ng-model="userInfo.Province" ng-options="value.name for value in provinceList" ng-change="onProvinceChange()" class="ng-pristine ng-untouched ng-valid">
@@ -385,17 +326,16 @@
 				</select><br>
             <span class="label">Neighbourhood</span>
 				<select style="width: 200px;" ng-model="userInfo.School" ng-options="value.name for value in schoolList" class="ng-pristine ng-untouched ng-valid">
-					<option value="0" selected="selected">Neighbourhood1</option>
-					<option value="1">Neighbourhood2</option>
-					<option value="2">Neighbourhood3</option>
-					<option value="3">Neighbourhood4</option>
-					<option value="4">Neighbourhood5</option>
+					<option value="0" selected="selected">Location1</option>
+					<option value="1">Location2</option>
+					<option value="2">Location3</option>
+					<option value="3">Location4</option>
+					<option value="4">Location5</option>
 				</select><br>
             <span class="label">Cellphone</span><input ng-model="userInfo.Address" class="ng-pristine ng-untouched ng-valid"><br>
-            <span class="label">Telephone</span><input ng-model="userInfo.FinishYear" class="ng-pristine ng-untouched ng-valid"><br>
             <span class="label">E-mail</span><input ng-model="userInfo.AccountName" class="ng-pristine ng-untouched ng-valid"><br>
-            <span class="label">Address 1</span><input ng-model="userInfo.AccountCity" class="ng-pristine ng-untouched ng-valid"><br>
-            <span class="label">Address 2</span><input ng-model="userInfo.AccountCity" class="ng-pristine ng-untouched ng-valid"><br><br>
+            <span class="label">Address Line 1</span><input ng-model="userInfo.AccountCity" class="ng-pristine ng-untouched ng-valid"><br>
+            <span class="label">Address Line 2</span><input ng-model="userInfo.AccountCity" class="ng-pristine ng-untouched ng-valid"><br><br>
             <button class="done" ng-click="onClickEditInfo()">
                 Update
             </button>
@@ -413,14 +353,14 @@
     </div>
     <form class="ng-pristine ng-valid ng-valid-maxlength">
         <div class="side">
-            <span class="label">Assignee</span>
+            <span class="label">Assignee Position</span>
 				<select ng-model="userInfo.AccountBank" class="ng-pristine ng-untouched ng-valid">
 					<option value="" selected="" class="ng-binding"></option>
 					<option value="Normal">Doctor</option>
 					<option value="Sick">Social Worker</option>
 					<option value="Serious">Developer</option>
 				</select><br>
-			<span class="label">&nbsp;&nbsp;&nbsp;</span>
+			<span class="label">Assignee Name</span>
 				<select ng-model="userInfo.AccountBank" class="ng-pristine ng-untouched ng-valid">
 					<option value="" selected="" class="ng-binding"></option>
 					<option value="Name 1">Name 1</option>
@@ -429,6 +369,14 @@
 					<option value="Name 4">Name 4</option>
 					<option value="Name 5">Name 5</option>
 					</select><br>
+            <span class="label">Location</span>
+				<select style="width: 200px;" ng-model="userInfo.School" ng-options="value.name for value in schoolList" class="ng-pristine ng-untouched ng-valid">
+					<option value="0" selected="selected">Location1</option>
+					<option value="1">Location2</option>
+					<option value="2">Location3</option>
+					<option value="3">Location4</option>
+					<option value="4">Location5</option>
+				</select><br>
             <span class="label">Area</span>
 				<select ng-model="userInfo.Province" ng-options="value.name for value in provinceList" ng-change="onProvinceChange()" class="ng-pristine ng-untouched ng-valid">
 					<option value="0" selected="selected">Area1</option>
@@ -437,15 +385,7 @@
 					<option value="3">Area4</option>
 					<option value="4">Area5</option>
 				</select><br>
-            <span class="label">Neighbourhood</span>
-				<select style="width: 200px;" ng-model="userInfo.School" ng-options="value.name for value in schoolList" class="ng-pristine ng-untouched ng-valid">
-					<option value="0" selected="selected">Neighbourhood1</option>
-					<option value="1">Neighbourhood2</option>
-					<option value="2">Neighbourhood3</option>
-					<option value="3">Neighbourhood4</option>
-					<option value="4">Neighbourhood5</option>
-				</select><br>
-            <span class="label">Patient</span>
+			<span class="label">Patient</span>
 				<select style="width: 200px;" ng-model="userInfo.School" ng-options="value.name for value in schoolList" class="ng-pristine ng-untouched ng-valid">
 					<option value="0" selected="selected"></option>
 					<option value="1"></option>
@@ -454,12 +394,11 @@
 					<option value="4"></option>
 				</select><br>
             <span class="label">Task Date</span><input ng-model="userInfo.AccountCity" class="ng-pristine ng-untouched ng-valid"><br>
+			<p style="font-size:12px; color:red">Date Controller</p>
 			<span class="label">Task Category</span>
 				<select ng-model="userInfo.AccountBank" class="ng-pristine ng-untouched ng-valid">
 					<option value="" selected="" class="ng-binding"></option>
-					<option value="Normal">Visit</option>
-					<option value="Sick">Medicine</option>
-					<option value="Serious">Injection</option>
+					<option value="Normal">Update Data</option>
 				</select><br><br>
             <button class="done" ng-click="onClickEditInfo()">
                 Assign
@@ -478,8 +417,7 @@
     </div>
 	<div>
         <p style="font-size:80%; color: black">Patient Name &nbsp; &nbsp;|&nbsp; &nbsp; Task Category<br></p>
-        <p style="font-size:80%; color: black">Area &nbsp; &nbsp;|&nbsp; &nbsp; Neighbourhood</p>
-        <p style="font-size:80%; color: black">Address:</p>
+        <p style="font-size:80%; color: black">Area &nbsp; &nbsp;|&nbsp; &nbsp; Location</p>
         <p style="font-size:80%; color: black">Designated Date:</p>
         <button style="background-color: #00ce9b" ng-click="applyPs(am.id)">&nbsp;&nbsp; Comment &nbsp;&nbsp;</button>
         &nbsp;
@@ -491,7 +429,7 @@
 	
 	<div>
         <p style="font-size:80%; color: black">Patient Name &nbsp; &nbsp;|&nbsp; &nbsp; Task Category<br></p>
-        <p style="font-size:80%; color: black">Area &nbsp; &nbsp;|&nbsp; &nbsp; Neighbourhood</p>
+        <p style="font-size:80%; color: black">Area &nbsp; &nbsp;|&nbsp; &nbsp; Location</p>
         <p style="font-size:80%; color: black">Address:</p>
         <p style="font-size:80%; color: black">Designated Date:</p>
         <button style="background-color: #00ce9b" ng-click="applyPs(am.id)">&nbsp;&nbsp; Comment &nbsp;&nbsp;</button>
@@ -504,7 +442,7 @@
 
 	<div>
         <p style="font-size:80%; color: black">Patient Name &nbsp; &nbsp;|&nbsp; &nbsp; Task Category<br></p>
-        <p style="font-size:80%; color: black">Area &nbsp; &nbsp;|&nbsp; &nbsp; Neighbourhood</p>
+        <p style="font-size:80%; color: black">Area &nbsp; &nbsp;|&nbsp; &nbsp; Location</p>
         <p style="font-size:80%; color: black">Address:</p>
         <p style="font-size:80%; color: black">Designated Date:</p>
         <button style="background-color: #00ce9b" ng-click="applyPs(am.id)">&nbsp;&nbsp; Comment &nbsp;&nbsp;</button>
@@ -518,6 +456,32 @@
 	</div>
 	</div>
 
+	<!-- Generate Registration Key -->
+	<div id="dash-frame" style="position: absolute; top: 7100px; left: 200px;">
+	<div class="dash-area ng-scope">
+    <div id="genRegistrationKey" class="titlebar">
+        <div><br><br><br>Generate Registration Key</div>
+    </div>
+    <form class="ng-pristine ng-valid ng-valid-maxlength">
+        <div class="side">
+            <span class="label">Reg Key Type</span>
+				<select ng-model="userInfo.AccountBank" class="ng-pristine ng-untouched ng-valid">
+					<option value="" selected="" class="ng-binding"></option>
+					<option value="Sick">Social Worker Registration</option>
+					<option value="Serious">Patient Registration</option>
+				</select><br>
+				<br>
+            <button class="done" ng-click="onClickEditInfo()">
+                Generate
+            </button>
+			<br><br>
+			<span class="label">User ID: </span><br>
+			<span class="label">Registration Key: </span>
+	</form>
+	<br><br><br><br><br><br><br><br><br><br>
+	
+	</div>
+	</div>
 
 
 
