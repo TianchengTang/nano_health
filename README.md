@@ -10,6 +10,7 @@ NanoHealth is a social enterprise specializing in chronic disease management and
 
 ####Who Are We####
 We are currently graduate students of Boston University.
+
 Team members: Chang Yan, Da Shu, Tiancheng Tang, Xin Li, Xuanyi Chen
 
 ###II. Website Structures###
